@@ -2,18 +2,16 @@ version: "3.8"
 
 services:
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    build: ./backend
     ports:
       - "8000:8000"
-    volumes:
-      - ./backend:/backend
-    working_dir: /backend
-  # environment:
-  #   - DATABASE_URL=postgresql://user:password@db:5432/foodtruckdb
-  # depends_on:
-  #   - db
+    # environment:
+    #   POSTGRES_DB: foodtruckdb
+    #   POSTGRES_USER: user
+    #   POSTGRES_PASSWORD: password
+    #   POSTGRES_HOST: db
+    # depends_on:
+    #   - db
 
   frontend:
     build:
@@ -29,16 +27,17 @@ services:
     depends_on:
       - backend
 
-  # db:
-  #  image: postgres:latest
-  #   restart: always
-  #   environment:
-  #     POSTGRES_USER: user
-  #     POSTGRES_PASSWORD: password
-  #     POSTGRES_DB: foodtruckdb
-  #   ports:
-  #     - "5432:5432"
-  #   volumes:
-  #     - db-data:/var/lib/postgresql/data
-# volumes:
-#   db-data:
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: foodtruckdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:

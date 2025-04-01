@@ -1,4 +1,6 @@
-flask
-flask-cors
-python-dotenv
+django
+djangorestframework
+django-cors-headers
 psycopg2-binary
+python-dotenv
+gunicorn

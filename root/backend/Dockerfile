@@ -1,19 +1,16 @@
-# Use Python base image (slim for smaller image size)
 FROM python:3.9-slim
 
-# Set working directory
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
 WORKDIR /app
 
-# Install dependencies
-COPY requirements.txt requirements.txt
+COPY requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# Copy all backend files
 COPY . .
 
-# Expose port 8000
 EXPOSE 8000
 
-# Run your Flask app
-CMD ["python", "app.py"]
+CMD ["gunicorn", "inventory_project.wsgi:application", "--bind", "0.0.0.0:8000"]
