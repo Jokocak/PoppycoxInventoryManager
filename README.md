@@ -41,7 +41,7 @@ docker compose up --build -d
 ```
 
 Your application will then be available at:
-- **Frontend**: [http://localhost:3000](http://localhost:3000)
+- **Frontend**: [http://localhost](http://localhost)
 - **Backend API**: [http://localhost:8000](http://localhost:8000)
 
 ### Project Structure
