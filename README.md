@@ -1,37 +1,59 @@
 # Poppycox Inventory Project
 
-This project aims to be an inventory manager for the Poppycox food truck.  This software tracks the current amount of inventory and adjusts it as new sales data comes in.  This software aims to complete the following:
+This project is an inventory management solution for the Poppycox food truck. The software tracks current inventory levels and dynamically updates inventory based on incoming sales data. It provides predictive insights to optimize inventory for future events.
 
-## Functionality List
-- [ ] Authentication Page
-  - The authentication page which takes an email and password to sign in to associated account.
-- [ ] Inventory Page
-  - Presents the current amount of inventory and adjusts it as new sales data is posted to Clover.
-- [ ] Sales Page
-  - Presents the amount of inventory sold at each event.
-- [ ] Inventory Prediction Page
-  - Presents predictions for required inventory for future events based on quantitative analysis, and in the future through a machine learning model.
+## Functionality
+- [ ] **Authentication Page**
+  - Users can securely log in using email and password.
+
+- [ ] **Inventory Page**
+  - Displays current inventory levels and automatically updates based on sales data retrieved from Clover.
+
+- [ ] **Sales Page**
+  - Provides detailed views of inventory sold at each event.
+
+- [ ] **Inventory Prediction Page**
+  - Predicts optimal inventory quantities for upcoming events using quantitative analysis, with future integration of machine learning algorithms.
 
 ## Getting Started
 
 ### Prerequisites
-- Python 3.8+
-- Node.js & npm
-- Git
+Ensure the following software is installed on your system:
+
+- [Docker](https://www.docker.com/products/docker-desktop/) (with Docker Compose)
+- [Git](https://git-scm.com/downloads)
+
+*Note: Docker installation includes Docker Compose.*
 
 ### Setup
+Follow these instructions to set up and run the project:
+
 ```bash
 # Clone the repository
 git clone https://github.com/Jokocak/PoppycoxInventoryManager.git
 cd PoppycoxInventoryManager
 
-# Backend setup
-python -m venv venv
-source venv/bin/activate  # venv\Scripts\activate on Windows
-pip install -r requirements.txt
-python backend/app.py
+# Run Docker Compose (development)
+docker compose up --build
 
-# Frontend setup
-cd frontend
-npm install
-npm start
+# Alternatively, run Docker Compose in detached mode
+docker compose up --build -d
+```
+
+Your application will then be available at:
+- **Frontend**: [http://localhost:3000](http://localhost:3000)
+- **Backend API**: [http://localhost:8000](http://localhost:8000)
+
+### Project Structure
+```
+root
+├── backend
+├── frontend
+└── data-analysis
+```
+
+### Next Steps
+- [ ] Implement authentication and database connection
+- [ ] Integrate Clover sales data
+- [ ] Develop predictive analytics module
+
